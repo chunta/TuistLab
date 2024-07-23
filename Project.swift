@@ -30,5 +30,14 @@ let project = Project(
             resources: [],
             dependencies: [.target(name: "MyApp")]
         ),
+    ],
+    schemes: [
+        .scheme(
+            name: "MyApp",
+            buildAction: .buildAction(targets: [TargetReference("MyApp")]),
+            runAction: .runAction(
+               arguments: Arguments.arguments(environmentVariables: ["IDEPreferLogStreaming": EnvironmentVariable.environmentVariable(value: "YES", isEnabled: true )])
+            )
+        ),
     ]
 )
